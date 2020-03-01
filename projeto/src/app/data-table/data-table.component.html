@@ -1,0 +1,64 @@
+<div class="mat-elevation-z8 data-table" >
+  <mat-card class="formulario" style="text-align: center;">
+      <mat-card-header class="title">
+          <mat-card-title>Lista de Máquinas</mat-card-title>
+      </mat-card-header>
+      <div class="table-responsive">
+        <mat-card-content class="table table-striped">
+              <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+                <ng-container *ngFor = "let maq of maquinas">
+
+                  <!-- Id -->
+                  <ng-container matColumnDef="id" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                  </ng-container>
+                  <!-- Código -->
+                  <ng-container matColumnDef="codigo" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Código </th>
+                    <td mat-cell *matCellDef="let row"> {{row.codigo}} </td>
+                  </ng-container>
+                  <!-- Descrição -->
+                  <ng-container matColumnDef="descricao">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Descrição </th>
+                    <td mat-cell *matCellDef="let row"> {{row.descricao}} </td>
+                  </ng-container>
+                  <!-- Linha -->
+                  <ng-container matColumnDef="linha">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Linha </th>
+                    <td mat-cell *matCellDef="let row"> {{row.linha}} </td>
+                  </ng-container>
+                  <!-- Edit-->
+                  <ng-container matColumnDef="edit">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let row">
+                        <a type="button" (click)="editMaquina(row)">
+                            <mat-icon class="icon">edit</mat-icon>
+                        </a>
+                    </td>
+                  </ng-container>
+                  <!-- Delete-->
+                  <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let row">
+                        <a type="button" (click)="deleteMaquina(row)">
+                            <mat-icon class="icon">delete</mat-icon>
+                        </a>
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                 </ng-container>
+              </table>
+
+              <mat-paginator #paginator
+              [length]="dataSource.data.length"
+              [pageIndex]="0"
+              [pageSize]="10"
+              [pageSizeOptions]="[3, 10, 15]">
+              </mat-paginator>
+
+        </mat-card-content>
+    </div>
+  </mat-card>
+</div>

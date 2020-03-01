@@ -1,0 +1,91 @@
+* {
+  font-family: 'Open Sans';
+}
+
+/**App.component*/
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav{
+  height: 100%;
+}
+
+li a:hover,
+li a:active {
+  color: lightgray;
+}
+
+.navigation-items {
+  list-style: none;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+
+li {
+  display: inline-flex;
+}
+
+li a{
+  margin: 0 50px;
+  text-decoration: none;
+  color: white;
+}
+
+.icon {
+  height: 30px;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+span.label {
+  margin-left: 8px;
+}
+
+
+/**Maquina-Form*/
+
+mat-form-field {
+  margin: 10px auto;
+}
+
+.main-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-image: url('./assets/images/maquina.jpg');
+  background-size: 35%;
+  margin: 0px 16px 0px 16px;
+}
+
+.title{
+  padding: 25px;
+  color: gray;
+}
+
+.button button{
+  margin: 20px;
+}
+
+.autocomplete{
+  padding-bottom: 20px;
+}
+
+/** Index HTML*/
+
+.container-footer {
+  color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  font-weight: 400;
+}
+
+/**List*/
+.data-table {
+  max-width: 75%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

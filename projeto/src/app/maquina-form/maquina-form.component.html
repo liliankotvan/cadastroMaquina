@@ -1,0 +1,37 @@
+<form class="main-div" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <mat-card class="formulario" style="text-align: center;">
+    <mat-card-header class="title">
+      <mat-card-title>Cadastro de Máquinas</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Código</mat-label>
+        <input matInput  required formControlName="codigo">
+        <mat-hint aliggn="start">Mín. 5 caracteres</mat-hint>
+        <mat-error *ngIf="form.controls['codigo'].errors?.required">Campo Obrigatório</mat-error>
+        <mat-error *ngIf="form.controls['codigo'].errors?.minlength">Mínimo de 5 caracteres</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput required rows="5" formControlName="descricao"
+          cdkTextareaAutosize #autosize="cdkTextareaAutosize">
+        </textarea>
+        <mat-error>Campo Obrigatório</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-select formControlName="linha" placeholder="Linha">
+          <ng-container *ngFor="let linha of linhas">
+            <mat-option value="{{linha.id}}">{{linha.value}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <div class="button">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Salvar</button>
+        <button mat-stroked-button color="warn" (click)="onCancel()">Limpar</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>
