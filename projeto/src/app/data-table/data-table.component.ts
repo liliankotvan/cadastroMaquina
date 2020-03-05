@@ -21,12 +21,14 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   displayedColumns = ['codigo', 'descricao', 'linha'];
 
   maquinas: Maquina[];
-
+  public validando: any;
 
   constructor(
                 private maqService: MaquinaService,
                 private router: Router
-            ) {}
+            ) {
+              this.validando = "aqui"
+            }
 
   editMaquina(maq: Maquina) {
     console.log(maq);

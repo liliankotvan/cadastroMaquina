@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Maquina } from './../shared/maquina';
+import { DataTableDataSource } from '../data-table/data-table-datasource';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,15 @@ import { Maquina } from './../shared/maquina';
 
 export class MaquinaService {
 
-  data: Maquina[];
-
+  data: any;
+  result:any
+  constructor(
+    dataObserver : DataTableDataSource // Construindo e importando os dados para que o getall possa ver os dados fake
+  ) {
+    this.result = dataObserver
+    
+        console.log(dataObserver) // Esse objeto e uma promessa
+  }
   create(maq: Maquina) {
     const itemIndex = this.data.length;
     maq.id = this.getnextId();
@@ -29,10 +37,10 @@ export class MaquinaService {
   getall(): Maquina[] {
     console.log("## Buscando dados ja cadastrados Inicio SERVICE##")
 
-    console.log(this.data);
+    console.log(this.result);
 
     console.log("## Buscando dados ja cadastrados Inicio SERVICE##")
-    return this.data;
+    return this.result.data; // Devolvendo[] de items de maquina
   }
 
   getMaqById(id: number) {

@@ -26,6 +26,7 @@ import { MatSidenavModule,
   MatDialogModule,
   MatSelectModule,
  } from '@angular/material';
+import { DataTableDataSource } from './data-table/data-table-datasource';
 
 
 @NgModule({
@@ -57,7 +58,10 @@ import { MatSidenavModule,
     MatDialogModule,
     MatSelectModule,
   ],
-  providers: [MaquinaService],
+  providers: [
+    MaquinaService,
+    DataTableDataSource // Colocando o DataTable aqui para que o service possa importalo 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
