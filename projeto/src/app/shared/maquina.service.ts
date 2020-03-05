@@ -27,8 +27,11 @@ export class MaquinaService {
   }
 
   getall(): Maquina[] {
-    console.log('maquinaservice:', this.getall);
+    console.log("## Buscando dados ja cadastrados Inicio SERVICE##")
+
     console.log(this.data);
+
+    console.log("## Buscando dados ja cadastrados Inicio SERVICE##")
     return this.data;
   }
 

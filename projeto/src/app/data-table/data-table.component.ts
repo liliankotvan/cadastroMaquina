@@ -23,25 +23,30 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   maquinas: Maquina[];
 
 
-  constructor(private maqs: MaquinaService, private router: Router) {}
+  constructor(
+                private maqService: MaquinaService,
+                private router: Router
+            ) {}
 
   editMaquina(maq: Maquina) {
     console.log(maq);
-    localStorage.removeItem('editMaquinaId');
-    localStorage.setItem('editMaquinaId', maq.id.toString());
+  // localStorage.removeItem('editMaquinaId');
+  //  localStorage.setItem('editMaquinaId', maq.id.toString());
     this.router.navigate(['edit']);
 
   }
 
   deleteMaquina(maq: Maquina) {
     console.log(maq);
-    this.maqs.delete(maq);
+    this.maqService.delete(maq);
   }
 
   ngOnInit() {
+    console.log("## INICIANDO NGOnInit##")
     console.log('maq:init');
-    this.maquinas = this.maqs.getall();
+    this.maquinas = this.maqService.getall();
     console.log(this.maquinas);
+    console.log("## INICIANDO NGOnInit##")
   }
 
   ngAfterViewInit() {
