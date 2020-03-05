@@ -5,10 +5,16 @@
       </mat-card-header>
       <div class="table-responsive">
       <pre>
-      {{maquinas|json}}
+      
       </pre>
         <mat-card-content class="table table-striped">
  <h1> Tabela com paginacao aqui em baixo</h1>
+ <div>
+      <p *ngFor = "let maq of maquinas">
+      {{maq|json}}
+      </p>
+
+ </div>
  <!--
               <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
                
