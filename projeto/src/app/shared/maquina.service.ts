@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Maquina } from './../shared/maquina';
 import { DataTableDataSource } from '../data-table/data-table-datasource';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class MaquinaService {
+  map(arg0: (result: Response) => any) {
+    throw new Error("Method not implemented.");
+  }
 
   data: any;
   result:any
@@ -34,7 +38,7 @@ export class MaquinaService {
     this.data[itemIndex] = maq;
   }
 
-  getall(): Maquina[] {
+  getall(): any {
     console.log("## Buscando dados ja cadastrados Inicio SERVICE##")
 
     console.log(this.result);
@@ -62,4 +66,70 @@ export class MaquinaService {
     });
     return highest + 1;
   }
+
+  getAll(){
+
+  
+  // let promise = new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+        
+  //       resolve(this.result.data);
+  //     }, 2000);
+
+
+  //   });
+  //   return promise;
+
+      // this.http.get(this.url)
+      //   .toPromise()
+      //   .then(
+      //         res => { 
+      //           resolve(res);
+      //         },
+      //         msg => { 
+      //           reject(msg);
+      //           }
+      //   );
+  }
+  process(data:any){
+      console.log("Transformar dado aqui")
+
+          // console.log(data.response.result)
+          let example :any[]=data.response.result.Example
+          let intent  :any[]=data.response.result.Intent
+          let dataTransform:any[]=[];
+          let i:number=0;
+          let obj1 = data.response.result.Example;
+          let obj2 = data.response.result.Intent
+          var arr1 = Array.from(
+                            Object.keys(obj1),
+                            k => obj1[k]
+                            );
+
+          var arr2 = Array.from(
+                              Object.keys(obj2),
+                              k=>obj2[k]
+                              );                  
+
+          // console.log(arr1)
+          // console.log(arr2)
+
+          // console.log(obj1)
+          // console.log(obj2)
+
+          for (let item of arr1){
+              let linha = {
+                "N":i,
+                "Example":arr1[i],
+
+                "Intent" :arr2[i],
+                
+              }
+              //  console.log(linha)
+              dataTransform.push(linha);
+              i++;
+          }
+          // console.log(dataTransform)
+          return dataTransform;
+    }// process()
 }
