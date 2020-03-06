@@ -16,13 +16,13 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatTable, {static: true}) table: MatTable<Maquina>;
+  // dataSource: DataTableDataSource;
+  displayedColumns: string[] = ['id', 'codigo', 'descricao', 'linha'];
+  // displayedColumns = ['codigo', 'descricao', 'linha'];
   dataSource: DataTableDataSource;
-
-  displayedColumns = ['codigo', 'descricao', 'linha'];
-
   maquinas: Maquina[];
   public validando: any;
-
+  
   constructor(
                 private maqService: MaquinaService,
                 private router: Router
@@ -46,14 +46,13 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     console.log("## INICIANDO NGOnInit##")
     console.log('maq:init');
-    this.maquinas = this.maqService.getall();
-    console.log(this.maquinas);
+     this.dataSource = this.maqService.getall()
     console.log("## INICIANDO NGOnInit##")
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    // this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.table.dataSource = this.dataSource;
   }
 }

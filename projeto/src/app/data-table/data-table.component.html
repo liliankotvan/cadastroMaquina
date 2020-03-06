@@ -8,72 +8,44 @@
       
       </pre>
         <mat-card-content class="table table-striped">
- <h1> Tabela com paginacao aqui em baixo</h1>
- <div>
-      <p *ngFor = "let maq of maquinas">
-      {{maq|json}}
-      </p>
+        <!-- ##### MUDAR PARA mat-Table -->
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
- </div>
- <!--
-              <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
-               
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
 
-                <ng-container *ngFor = "let maq of maquinas">
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> Id. </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
 
-                  
-                        <ng-container matColumnDef="id" >
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-                          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-                        </ng-container>
-                        
-                        <ng-container matColumnDef="codigo" >
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Código </th>
-                          <td mat-cell *matCellDef="let row"> {{row.codigo}} </td>
-                        </ng-container>
-                       
-                        <ng-container matColumnDef="descricao">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Descrição </th>
-                          <td mat-cell *matCellDef="let row"> {{row.descricao}} </td>
-                        </ng-container>
-                        
-                        <ng-container matColumnDef="linha">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Linha </th>
-                          <td mat-cell *matCellDef="let row"> {{row.linha}} </td>
-                        </ng-container>
-                       
-                        <ng-container matColumnDef="edit">
-                          <th mat-header-cell *matHeaderCellDef></th>
-                          <td mat-cell *matCellDef="let row">
-                              <a type="button" (click)="editMaquina(row)">
-                                  <mat-icon class="icon">edit</mat-icon>
-                              </a>
-                          </td>
-                        </ng-container>
-                       
-                        <ng-container matColumnDef="delete">
-                          <th mat-header-cell *matHeaderCellDef></th>
-                          <td mat-cell *matCellDef="let row">
-                              <a type="button" (click)="deleteMaquina(row)">
-                                  <mat-icon class="icon">delete</mat-icon>
-                              </a>
-                          </td>
-                        </ng-container>
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="codigo">
+              <th mat-header-cell *matHeaderCellDef> Codigo </th>
+              <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+            </ng-container>
 
-              </table>
--->
-<!--
-              <mat-paginator #paginator
-              [length]="dataSource.data.length"
-              [pageIndex]="0"
-              [pageSize]="10"
-              [pageSizeOptions]="[3, 10, 15]">
-              </mat-paginator>
--->
+            <!-- Weight Column -->
+            <ng-container matColumnDef="descricao">
+              <th mat-header-cell *matHeaderCellDef> descricao </th>
+              <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="linha">
+              <th mat-header-cell *matHeaderCellDef> linha </th>
+              <td mat-cell *matCellDef="let element"> {{element.linha}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <!-- ##### Configurar Pagination #### -->
+
+          </table>
+        <!-- ##### MUDAR PARA mat-Table ##### -->
         </mat-card-content>
     </div>
   </mat-card>
+
 </div>
